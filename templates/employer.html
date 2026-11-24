@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8f5">
+  <meta name="description" content="Describe a role and its practical skills to start shaping a job-ready learning path with Veridion.">
+  <title>Employer requirements — Veridion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="employer-page">
+  <div class="page-shell">
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a class="brand" href="{{ url_for('home') }}" aria-label="Veridion home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M16 3.5 27 9.8v12.4L16 28.5 5 22.2V9.8L16 3.5Z" stroke="currentColor" stroke-width="2.2"/><path d="m10.6 16.1 3.5 3.5 7.6-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span>veri<span class="brand-accent">dion</span></span>
+        </a>
+        <div class="nav-links employer-nav-links">
+          <a href="{{ url_for('home') }}#how-it-works">How it works</a>
+          <a href="{{ url_for('home') }}#learners">For learners</a>
+          <a class="nav-cta" href="{{ url_for('home') }}">Back to home <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="employer-main container">
+      <div class="employer-heading">
+        <a class="back-link" href="{{ url_for('home') }}"><span aria-hidden="true">←</span> Back to homepage</a>
+        <div class="employer-intro">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> EMPLOYER WORKSPACE</span>
+          <h1>Start with the work<br>that <span class="serif-accent">matters.</span></h1>
+          <p>Tell us about the role and skills your team needs. These requirements can guide a future learning path and practical assessment.</p>
+        </div>
+      </div>
+
+      <div class="employer-layout">
+        <section class="requirement-panel" aria-labelledby="form-title">
+          <div class="form-panel-heading">
+            <div>
+              <span class="form-step-label">ROLE DETAILS <span>01 / 01</span></span>
+              <h2 id="form-title">Define your requirements</h2>
+              <p>Share the essential details to get started.</p>
+            </div>
+            <span class="form-heading-icon" aria-hidden="true">✳</span>
+          </div>
+
+          <div id="form-message" class="form-message" role="status" aria-live="polite" hidden></div>
+          <form id="employer-requirements-form" novalidate>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="company-name">Company name <span aria-hidden="true">*</span></label>
+                <input id="company-name" name="companyName" type="text" placeholder="e.g. Northstar Manufacturing" maxlength="120" autocomplete="organization" required aria-describedby="error-companyName">
+                <small class="field-error" id="error-companyName"></small>
+              </div>
+              <div class="form-field">
+                <label for="job-role">Job role / position <span aria-hidden="true">*</span></label>
+                <input id="job-role" name="jobRole" type="text" placeholder="e.g. Maintenance Technician" maxlength="120" required aria-describedby="error-jobRole">
+                <small class="field-error" id="error-jobRole"></small>
+              </div>
+
+              <div class="form-field full-width">
+                <label for="skill-input">Required skills <span aria-hidden="true">*</span></label>
+                <p class="field-hint" id="skills-hint">Add each skill separately. Press Enter or select Add skill.</p>
+                <div class="skill-entry-row">
+                  <input id="skill-input" type="text" placeholder="e.g. Equipment diagnostics" maxlength="60" aria-describedby="skills-hint error-requiredSkills" autocomplete="off">
+                  <button class="add-skill-button" id="add-skill-button" type="button">Add skill <span aria-hidden="true">+</span></button>
+                </div>
+                <div class="skill-tags" id="skill-tags" aria-label="Added required skills"></div>
+                <small class="field-error" id="error-requiredSkills"></small>
+              </div>
+
+              <div class="form-field">
+                <label for="experience-level">Experience level <span aria-hidden="true">*</span></label>
+                <select id="experience-level" name="experienceLevel" required aria-describedby="error-experienceLevel">
+                  <option value="" disabled selected>Select a level</option>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                </select>
+                <small class="field-error" id="error-experienceLevel"></small>
+              </div>
+              <div class="form-field">
+                <label for="course-duration">Course duration <span aria-hidden="true">*</span></label>
+                <select id="course-duration" name="courseDuration" required aria-describedby="error-courseDuration">
+                  <option value="" disabled selected>Select a duration</option>
+                  <option value="1 week">1 week</option>
+                  <option value="2 weeks">2 weeks</option>
+                  <option value="1 month">1 month</option>
+                </select>
+                <small class="field-error" id="error-courseDuration"></small>
+              </div>
+
+              <div class="form-field full-width">
+                <label for="job-description">Job description <span aria-hidden="true">*</span></label>
+                <textarea id="job-description" name="jobDescription" rows="6" maxlength="5000" placeholder="Describe the day-to-day responsibilities, tools, and outcomes for this role..." required aria-describedby="description-count error-jobDescription"></textarea>
+                <div class="textarea-meta"><span>Include the tasks and tools the person will use.</span><span id="description-count">0 / 5000</span></div>
+                <small class="field-error" id="error-jobDescription"></small>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <p><span aria-hidden="true">ⓘ</span> Requirements are received by this prototype but are not saved.</p>
+              <button class="button button-primary submit-button" type="submit" id="submit-requirements">
+                <span class="button-label">Generate Learning Path</span><span class="button-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <aside class="employer-aside" aria-label="What happens next">
+          <div class="aside-card demand-card">
+            <span class="aside-eyebrow">BUILT AROUND YOUR NEEDS</span>
+            <h2>Make the role<br><span class="serif-accent">the starting point.</span></h2>
+            <p>Clear requirements help connect practical learning to real hiring demand.</p>
+            <div class="aside-divider"></div>
+            <div class="aside-benefit"><span>✓</span><p><strong>Focus on demonstrated skills</strong><small>Describe the abilities behind the job.</small></p></div>
+            <div class="aside-benefit"><span>✓</span><p><strong>Set a useful learning scope</strong><small>Choose a level and practical time frame.</small></p></div>
+            <div class="aside-benefit"><span>✓</span><p><strong>Shape future assessments</strong><small>Connect tasks and skills to role needs.</small></p></div>
+          </div>
+          <div class="prototype-note"><span class="note-star" aria-hidden="true">✳</span><p><strong>Personalized learning path</strong><br>First create a concise course outline. Open a module to generate its detailed lesson.</p></div>
+        </aside>
+      </div>
+
+      <section id="course-results" class="course-results" aria-live="polite" hidden></section>
+
+    </main>
+
+    <footer class="site-footer container">
+      <a class="brand footer-brand" href="{{ url_for('home') }}"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 3.5 27 9.8v12.4L16 28.5 5 22.2V9.8L16 3.5Z" stroke="currentColor" stroke-width="2.2"/><path d="m10.6 16.1 3.5 3.5 7.6-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>veri<span class="brand-accent">dion</span></span></a>
+      <p>Skills you can show. Opportunities you can grow.</p>
+      <span class="copyright">© 2026 Veridion</span>
+    </footer>
+  </div>
+  <script src="{{ url_for('static', filename='employer.js') }}"></script>
+</body>
+</html>
